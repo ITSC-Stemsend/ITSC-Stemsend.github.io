@@ -24,6 +24,12 @@ function showLoading() {
   loader.style.display = "inline-block";
   setTimeout(function() {
     loader.style.display = "none";
-    btn.innerHTML = "Kirim Pesan";
+    btn.innerHTML = "Kirim";
   }, 3000); // Menunggu 3 detik sebelum mengembalikan tombol ke kondisi semula
+
+   // Setelah pengiriman selesai, lakukan pembaruan halaman setelah penundaan tertentu
+   setTimeout(function() {
+    location.reload();
+  }, 2000); // Mengatur waktu penundaan dalam milidetik sebelum memperbarui halaman (2 detik dalam contoh ini)
 }
+

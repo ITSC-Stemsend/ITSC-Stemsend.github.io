@@ -165,18 +165,15 @@
     <!-- Js -->
     <script src="js/ITSC.js"></script>
     <script>
-      function showLoading() {
-        var btn = document.getElementById("loadingBtn");
-        var loader = document.createElement("div");
-        loader.className = "loader";
-        btn.innerHTML = ""; // Menghapus teks pada tombol
-        btn.appendChild(loader);
-        loader.style.display = "inline-block";
-        setTimeout(function() {
-          loader.style.display = "none";
-          btn.innerHTML = "Klik untuk Loading";
-        }, 3000); // Menunggu 3 detik sebelum mengembalikan tombol ke kondisi semula
-      }
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzC9Ub_yl8Zt6pOyyMaF09d9UBZHy8pXEDYDWtKyFPcapelxwnGbqhhg1ZejM_zlsAq8A/exec'
+      const form = document.forms['ITSC-Stemsend-Form']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => console.log('Success!', response))
+          .catch(error => console.error('Error!', error.message))
+      })
     </script>
   </body>
 </html>
